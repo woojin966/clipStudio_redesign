@@ -1,24 +1,26 @@
 <template>
-  <div id="app">
+  <div id="app" class="body_wrapper">
     <header>
-      <nav>
-        <router-link to="/">홈</router-link>
-        <router-link to="/features">기능</router-link>
-        <router-link to="/pricing">구독</router-link>
-      </nav>
+      <div class="header_wrapper">
+        <Header></Header>
+      </div>
     </header>
     <main>
-      <router-view />
+      <div class="main_wrapper">
+        <router-view />
+      </div>
     </main>
-    <footer>ⓒ CLIP STUDIO PAINT Redesign</footer>
+    <footer>
+      <div class="footer_wrapper">
+        <Footer></Footer>
+      </div>
+    </footer>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import Header from "./components/common/Header.vue";
+import Footer from "./components/common/Footer.vue";
+</script>
 
-<style lang="scss">
-body {
-  background-color: $black; // 변수가 잘 먹히면 성공!
-  color: $white;
-}
-</style>
+<style lang="scss"></style>
