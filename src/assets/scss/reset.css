@@ -90,13 +90,7 @@ video {
   font: inherit;
   vertical-align: baseline;
 }
-/* HTML5 display-role reset for older browsers */
-html,
-body {
-  font-family: 'Pretendard', 'Apple SD Sandol Gothic Neo', sans-serif;
-  line-height: 1.2;
-  color: var(--$grayDark3);
-}
+
 article,
 aside,
 details,
@@ -140,7 +134,7 @@ table {
 a {
   text-decoration: none;
   display: inline-block;
-  color: inherit;
+  color: inherit; cursor: pointer;
 }
 img {
   display: inline-block;
@@ -153,7 +147,7 @@ strong {
 button {
   padding: 0;
   border: none;
-  background-color: transparent;
+  background-color: transparent; cursor: pointer;
 }
 input,
 select,

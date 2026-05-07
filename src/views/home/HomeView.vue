@@ -42,6 +42,41 @@
       </Swiper> -->
     </section>
   </article>
+  <div
+    :class="[
+      'ipt_group lg has_l_icon has_r_icon', // lg, regular, small, has_l_icon, has_r_icon
+    ]"
+  >
+    <span class="icon left">
+      <img src="" />
+    </span>
+    <input
+      type="text"
+      :value="modelValue"
+      :placeholder="placeholder"
+      @input="$emit('update:modelValue', $event.target.value)"
+    />
+    <button class="icon right">
+      <img src="" />
+    </button>
+  </div>
+  <label class="chkbox_group">
+    <input
+      type="checkbox"
+      :checked="modelValue"
+      @change="$emit('update:modelValue', $event.target.checked)"
+    />
+    <span v-if="label">{{ label }}</span>
+  </label>
+  <label class="radio_group">
+    <input
+      type="radio"
+      :value="value"
+      :checked="modelValue === value"
+      @change="$emit('update:modelValue', value)"
+    />
+    <span v-if="label">{{ label }}</span>
+  </label>
 </template>
 <script setup>
 import { Pagination, Navigation } from "swiper/modules";

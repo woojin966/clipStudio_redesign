@@ -1,0 +1,12 @@
+# 빌드 결과물 제외
+dist/
+build/
+
+# 특정 폴더나 파일 제외
+node_modules/
+src/assets/lib/         # 외부 라이브러리라 건드리면 안 될 때
+public/data.json        # 데이터 파일이라 정렬 필요 없을 때
+
+# 특정 확장자 다 제외
+*.css
+*.scss
