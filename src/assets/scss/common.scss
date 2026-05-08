@@ -1,7 +1,7 @@
 @import "reset.css";
 @import "variables.scss";
 
-html, body {font-family: 'Pretendard', 'Apple SD Sandol Gothic Neo', sans-serif; line-height: 1.2; color: $text_default; letter-spacing: -.2px;}
+html, body {font-family: 'Pretendard', 'Apple SD Sandol Gothic Neo', sans-serif; line-height: 1.2; color: $text_default; letter-spacing: -1px;}
 .hidden {display: none;}
 .flex_c{display: flex; flex-direction: column;}
 
@@ -41,20 +41,20 @@ html, body {font-family: 'Pretendard', 'Apple SD Sandol Gothic Neo', sans-serif;
   }
   @media all and (max-width: 450px){
     gap: 0.889vw;
-    &.xl{height: var(--scale_48); font-size: 4.000vw;} /*18px*/
-    &.lg{height: var(--scale_44); font-size: 4.000vw;} /*18px*/
-    &.regular{height: var(--scale_36); font-size: 3.556vw;} /*16px*/
-    &.sm{height: var(--scale_24); font-size: 3.556vw;} /*16px*/
-    &.mini{height: var(--scale_20); font-size: 3.111vw;} /*14px*/
+    &.xl{height: var(--scale_48); font-size: 4.615vw;} /*18px*/
+    &.lg{height: var(--scale_44); font-size: 4.615vw;} /*18px*/
+    &.regular{height: var(--scale_36); font-size: 4.103vw;} /*16px*/
+    &.sm{height: var(--scale_24); font-size: 4.103vw;} /*16px*/
+    &.mini{height: var(--scale_20); font-size: 3.590vw;} /*14px*/
   }
-  // @media all and (max-width: 360px){
-  //   gap: 1.111vw;
-  //   &.xl{height: var(--scale_48); font-size: 5.000vw;} /*18px*/
-  //   &.lg{height: var(--scale_44); font-size: 5.000vw;} /*18px*/
-  //   &.regular{height: var(--scale_36); font-size: 4.444vw;} /*16px*/
-  //   &.sm{height: var(--scale_24); font-size: 4.444vw;} /*16px*/
-  //   &.mini{height: var(--scale_20); font-size: 3.889vw;} /*14px*/
-  // }
+  @media all and (max-width: 360px){
+    gap: 1.111vw;
+    &.xl{height: var(--scale_48); font-size: 5.000vw;} /*18px*/
+    &.lg{height: var(--scale_44); font-size: 5.000vw;} /*18px*/
+    &.regular{height: var(--scale_36); font-size: 4.444vw;} /*16px*/
+    &.sm{height: var(--scale_24); font-size: 4.444vw;} /*16px*/
+    &.mini{height: var(--scale_20); font-size: 3.889vw;} /*14px*/
+  }
 }
 
 // icon
@@ -151,8 +151,8 @@ html, body {font-family: 'Pretendard', 'Apple SD Sandol Gothic Neo', sans-serif;
     gap: var(--gap_4); font-size: 1.823vw;
     input[type="checkbox"]{width: var(--scale_24); height: var(--scale_24);}
   }
-  @media all and (max-width: 450px){font-size: 3.111vw;}
-  // @media all and (max-width: 360px){font-size: 3.889vw;}
+  @media all and (max-width: 450px){font-size: 3.590vw;} /*14px*/
+  @media all and (max-width: 360px){font-size: 3.889vw;}
 }
 
 // radio
@@ -179,8 +179,8 @@ html, body {font-family: 'Pretendard', 'Apple SD Sandol Gothic Neo', sans-serif;
     gap: var(--gap_4); font-size: 1.823vw;
     input[type="radio"]{width: var(--scale_24); height: var(--scale_24);}
   }
-  @media all and (max-width: 450px){font-size: 3.111vw;}
-  // @media all and (max-width: 360px){font-size: 3.889vw;}
+  @media all and (max-width: 450px){font-size: 3.590vw;} /*14px*/
+  @media all and (max-width: 360px){font-size: 3.889vw;}
 }
 
 // textarea
@@ -189,6 +189,6 @@ textarea{
   &:active{border: 1px solid $gray1;}
   @media all and (max-width: 1024px){padding: var(--padding_12) var(--padding_16); font-size: 1.563vw;}
   @media all and (max-width: 768px){font-size: 2.083vw;}
-  @media all and (max-width: 450px){padding: var(--padding_12); font-size: 3.556vw;}
-  // @media all and (max-width: 360px){font-size: 4.444vw;}
+  @media all and (max-width: 450px){padding: var(--padding_12); font-size: 4.103vw;} /*16px*/
+  @media all and (max-width: 360px){font-size: 4.444vw;}
 }

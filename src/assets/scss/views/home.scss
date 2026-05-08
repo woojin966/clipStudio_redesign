@@ -36,9 +36,8 @@
       position: absolute; left: var(--padding_60); gap: var(--gap_28);
       .move_guide{width: max-content;}
       @media all and (max-width: 768px){gap: var(--gap_24);}
-      @media all and (max-width: 450px){
-        width: 100%; text-align: center; align-items: center; left: 0; top: 40px; gap: var(--gap_20);
-      } 
+      @media all and (max-width: 450px){width: 100%; text-align: center; align-items: center; left: 0; top: var(--gap_40); gap: var(--gap_20);} 
+      @media all and (max-width: 360px){top: var(--gap_28); }
     }
     picture{width: 100%;}
     img{width: 100%; height: auto;}
