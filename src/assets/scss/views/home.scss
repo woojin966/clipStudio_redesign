@@ -22,3 +22,28 @@
     }
   }
 }
+
+// device guide
+.device_parallax_wrap{
+  height: var(--dynamic-h, 400px); overflow-y: scroll; scroll-snap-type: none; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none;
+  &::-webkit-scrollbar {display: none;}
+  section.parallax_sec{
+    position: sticky; top: 0; width: 100%; height: var(--dynamic-h, 400px); display: flex; align-items: center; scroll-snap-align: start; scroll-snap-stop: always; overflow: hidden; background-color: #fff; 
+    &.pc { z-index: 1; }
+    &.tablet { z-index: 2; }
+    &.mobile { z-index: 3; }
+    .title_box{
+      position: absolute; left: var(--padding_60); gap: var(--gap_28);
+      .move_guide{width: max-content;}
+      @media all and (max-width: 768px){gap: var(--gap_24);}
+      @media all and (max-width: 450px){
+        width: 100%; text-align: center; align-items: center; left: 0; top: 40px; gap: var(--gap_20);
+      } 
+    }
+    picture{width: 100%;}
+    img{width: 100%; height: auto;}
+  }
+}
+.device_parallax_wrap{
+
+}

@@ -1,17 +1,17 @@
 <template>
   <div id="app" class="body_wrapper">
     <header>
-      <div class="header_wrapper">
+      <div class="wrapper header_wrapper">
         <Header></Header>
       </div>
     </header>
     <main>
-      <div class="main_wrapper">
+      <div class="wrapper main_wrapper">
         <router-view />
       </div>
     </main>
     <footer>
-      <div class="footer_wrapper">
+      <div class="wrapper footer_wrapper">
         <Footer></Footer>
       </div>
     </footer>

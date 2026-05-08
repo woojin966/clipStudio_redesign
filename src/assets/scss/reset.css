@@ -137,7 +137,7 @@ a {
   color: inherit; cursor: pointer;
 }
 img {
-  display: inline-block;
+  display: block;
 }
 span,
 b,

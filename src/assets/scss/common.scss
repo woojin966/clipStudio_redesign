@@ -1,71 +1,72 @@
 @import "reset.css";
 @import "variables.scss";
 
-html,
-body {
-  font-family: 'Pretendard', 'Apple SD Sandol Gothic Neo', sans-serif;
-  line-height: 1.2; color: $text_default; letter-spacing: -.2px;
-}
-.hidden {
-  display: none;
+html, body {font-family: 'Pretendard', 'Apple SD Sandol Gothic Neo', sans-serif; line-height: 1.2; color: $text_default; letter-spacing: -.2px;}
+.hidden {display: none;}
+.flex_c{display: flex; flex-direction: column;}
+
+// layouts
+.wrapper{
+  width: 100%; min-width: var(--contentiner_width); margin: 0 auto;
 }
 
 // button
 .btn {
-  display: flex; align-items: center; justify-content: center; gap: 4px;
-  &.xl{height: $scale_56; font-size: 20px;}
-  &.lg{height: $scale_48; font-size: 20px;}
-  &.regular{height: $scale_44; font-size: 16px;}
-  &.sm{height: $scale_24; font-size: 16px;}
-  &.mini{height: $scale_20; font-size: 14px;}
+  display: flex; align-items: center; justify-content: center; gap: 4px; transition: all .2s ease-in-out; font-weight: 500;
+  &.xl{height: var(--scale_56); font-size: 20px; padding: 0 var(--padding_20); border-radius: var(--radius_8);}
+  &.lg{height: var(--scale_48); font-size: 20px; padding: 0 var(--padding_20); border-radius: var(--radius_8);}
+  &.regular{height: var(--scale_44); font-size: 16px; padding: 0 var(--padding_20); border-radius: var(--radius_8);}
+  &.sm{height: var(--scale_24); font-size: 16px; padding: 0 var(--padding_16); border-radius: var(--radius_4);}
+  &.mini{height: var(--scale_20); font-size: 14px; padding: 0 var(--padding_12); border-radius: var(--radius_4);}
   &.primary{background-color: $text_default; color: $white;}
   &.secondary{background-color: $gray2; color: $text_default;}
   &.line{background-color: $gray1; color: $gray1; background-color: $white;}
-  &.special:hover{background: $point_gradient; color: $text_default;}
+  &.primary:hover{background: $point_gradient; color: $text_default;}
+  &:hover{font-weight: 600;}
   @media all and (max-width: 1024px){
     gap: 0.391vw;
-    &.xl{height: $scale_48; font-size: 1.758vw;} /*18px*/
-    &.lg{height: $scale_44; font-size: 1.758vw;} /*18px*/
-    &.regular{height: $scale_40; font-size: 1.563vw;} /*16px*/
-    &.sm{height: $scale_24; font-size: 1.563vw;} /*16px*/
-    &.mini{height: $scale_20; font-size: 1.367vw;} /*14px*/
+    &.xl{height: var(--scale_48); font-size: 1.758vw;} /*18px*/
+    &.lg{height: var(--scale_44); font-size: 1.758vw;} /*18px*/
+    &.regular{height: var(--scale_40); font-size: 1.563vw;} /*16px*/
+    &.sm{height: var(--scale_24); font-size: 1.563vw;} /*16px*/
+    &.mini{height: var(--scale_20); font-size: 1.367vw;} /*14px*/
   }
   @media all and (max-width: 768px){
     gap: 0.521vw;
-    &.xl{height: $scale_48; font-size: 2.344vw;} /*18px*/
-    &.lg{height: $scale_44; font-size: 2.344vw;} /*18px*/
-    &.regular{height: $scale_40; font-size: 2.083vw;} /*16px*/
-    &.sm{height: $scale_24; font-size: 2.083vw;} /*16px*/
-    &.mini{height: $scale_20; font-size: 1.823vw;} /*14px*/
+    &.xl{height: var(--scale_48); font-size: 2.344vw;} /*18px*/
+    &.lg{height: var(--scale_44); font-size: 2.344vw;} /*18px*/
+    &.regular{height: var(--scale_40); font-size: 2.083vw;} /*16px*/
+    &.sm{height: var(--scale_24); font-size: 2.083vw;} /*16px*/
+    &.mini{height: var(--scale_20); font-size: 1.823vw;} /*14px*/
   }
   @media all and (max-width: 450px){
     gap: 0.889vw;
-    &.xl{height: $scale_48; font-size: 4.000vw;} /*18px*/
-    &.lg{height: $scale_44; font-size: 4.000vw;} /*18px*/
-    &.regular{height: $scale_36; font-size: 3.556vw;} /*16px*/
-    &.sm{height: $scale_24; font-size: 3.556vw;} /*16px*/
-    &.mini{height: $scale_20; font-size: 3.111vw;} /*14px*/
+    &.xl{height: var(--scale_48); font-size: 4.000vw;} /*18px*/
+    &.lg{height: var(--scale_44); font-size: 4.000vw;} /*18px*/
+    &.regular{height: var(--scale_36); font-size: 3.556vw;} /*16px*/
+    &.sm{height: var(--scale_24); font-size: 3.556vw;} /*16px*/
+    &.mini{height: var(--scale_20); font-size: 3.111vw;} /*14px*/
   }
-  @media all and (max-width: 360px){
-    gap: 1.111vw;
-    &.xl{height: $scale_48; font-size: 5.000vw;} /*18px*/
-    &.lg{height: $scale_44; font-size: 5.000vw;} /*18px*/
-    &.regular{height: $scale_36; font-size: 4.444vw;} /*16px*/
-    &.sm{height: $scale_24; font-size: 4.444vw;} /*16px*/
-    &.mini{height: $scale_20; font-size: 3.889vw;} /*14px*/
-  }
+  // @media all and (max-width: 360px){
+  //   gap: 1.111vw;
+  //   &.xl{height: var(--scale_48); font-size: 5.000vw;} /*18px*/
+  //   &.lg{height: var(--scale_44); font-size: 5.000vw;} /*18px*/
+  //   &.regular{height: var(--scale_36); font-size: 4.444vw;} /*16px*/
+  //   &.sm{height: var(--scale_24); font-size: 4.444vw;} /*16px*/
+  //   &.mini{height: var(--scale_20); font-size: 3.889vw;} /*14px*/
+  // }
 }
 
 // icon
 .icon{
   img{width: 100%; height: 100%;}
-  &.xxlg{width: $scale_48; height: $scale_48;}
-  &.xlg{width: $scale_40; height: $scale_40;}
-  &.lg{width: $scale_28; height: $scale_28;}
-  &.md{width: $scale_24; height: $scale_24;}
-  &.regular{width: $scale_20; height: $scale_20;}
-  &.small{width: $scale_14; height: $scale_14;}
-  &.mini{width: $scale_8; height: $scale_8;}
+  &.xxlg{width: var(--scale_48); height: var(--scale_48);}
+  &.xlg{width: var(--scale_40); height: var(--scale_40);}
+  &.lg{width: var(--scale_28); height: var(--scale_28);}
+  &.md{width: var(--scale_24); height: var(--scale_24);}
+  &.regular{width: var(--scale_20); height: var(--scale_20);}
+  &.small{width: var(--scale_14); height: var(--scale_14);}
+  &.mini{width: var(--scale_8); height: var(--scale_8);}
 }
 
 // input
@@ -73,7 +74,7 @@ body {
   width: 100%; position: relative; display: flex; align-items: center;
   input[type="text"]{
     width: 100%; border: 1px solid $gray3; outline: none;
-    transition: all 0.2s ease; border-radius: $radius_8;
+    transition: all 0.2s ease; border-radius: var(--radius_8);
     &:focus{border: 1px solid $gray1;}
   }
   .icon{ /* 버튼이나 div로 넣을 것 */
@@ -81,58 +82,58 @@ body {
     img{width: 100%; height: 100%;}
   }
   &.lg{
-    input[type="text"]{height: $scale_48; padding: 0 $padding_20;}
+    input[type="text"]{height: var(--scale_48); padding: 0 var(--padding_20);}
     &.has_l_icon{
-      input{padding-left: calc($padding_20 + $scale_20 + 4px);}
+      input{padding-left: calc(var(--padding_20) + var(--scale_20) + 4px);}
     }
     &.has_r_icon{
-      input{padding-right: calc($padding_20 + $scale_20 + 4px);}
+      input{padding-right: calc(var(--padding_20) + var(--scale_20) + 4px);}
     }
     .icon{
-      width: $scale_20; height: $scale_20;
-      &.left{left: $padding_20;}
-      &.right{right: $padding_20;}
+      width: var(--scale_20); height: var(--scale_20);
+      &.left{left: var(--padding_20);}
+      &.right{right: var(--padding_20);}
     }
     @media all and (max-width: 768px){
-      input{height: $scale_44;}
+      input{height: var(--scale_44);}
     }
   }
   &.regular{
-    input[type="text"]{height: $scale_40; padding: 0 $padding_16;}
+    input[type="text"]{height: var(--scale_40); padding: 0 var(--padding_16);}
     &.has_l_icon{
-      input{padding-left: calc($padding_16 + $scale_14 + 4px);}
+      input{padding-left: calc(var(--padding_16) + var(--scale_14) + 4px);}
     }
     &.has_r_icon{
-      input{padding-right: calc($padding_16 + $scale_14 + 4px);}
+      input{padding-right: calc(var(--padding_16) + var(--scale_14) + 4px);}
     }
     .icon{
-      width: $scale_14; height: $scale_14;
-      &.left{left: $padding_16;}
-      &.right{right: $padding_16;}
+      width: var(--scale_14); height: var(--scale_14);
+      &.left{left: var(--padding_16);}
+      &.right{right: var(--padding_16);}
     }
   }
   &.small{
-    input[type="text"]{height: $scale_28; padding: 0 $padding_12; border-radius: $radius_4;}
+    input[type="text"]{height: var(--scale_28); padding: 0 var(--padding_12); border-radius: var(--radius_4);}
     &.has_l_icon{
-      input{padding-left: calc($padding_12 + $scale_12 + 4px);}
+      input{padding-left: calc(var(--padding_12) + var(--scale_12) + 4px);}
     }
     &.has_r_icon{
-      input{padding-right: calc($padding_12 + $scale_12 + 4px);}
+      input{padding-right: calc(var(--padding_12) + var(--scale_12) + 4px);}
     }
     .icon{
-      width: $scale_12; height: $scale_12;
-      &.left{left: $padding_12;}
-      &.right{right: $padding_12;}
+      width: var(--scale_12); height: var(--scale_12);
+      &.left{left: var(--padding_12);}
+      &.right{right: var(--padding_12);}
     }
   }
 }
 
 // checkbox
 .chkbox_group{
-  display: flex; align-items: center; gap: $gap_8; user-select: none; font-size: 16px;
+  display: flex; align-items: center; gap: var(--gap_8); user-select: none; font-size: 16px;
   input[type="checkbox"]{
-    appearance: none; -webkit-appearance: none; width: $scale_20; height: $scale_20; border: 1px solid $gray3; border-radius: $radius_4; background-color: $white; position: relative; cursor: pointer; transition: all .2s cubic-bezier(.4,0,.2,1); outline: none;
-    &::after{content: ''; position: absolute; top: 50%; left: 50%; width: $scale_12; height: $scale_12; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E"); background-size: contain; background-repeat: no-repeat; transform: translate(-50%, -50%) scale(0); transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);}
+    appearance: none; -webkit-appearance: none; width: var(--scale_20); height: var(--scale_20); border: 1px solid $gray3; border-radius: var(--radius_4); background-color: $white; position: relative; cursor: pointer; transition: all .2s cubic-bezier(.4,0,.2,1); outline: none;
+    &::after{content: ''; position: absolute; top: 50%; left: 50%; width: var(--scale_12); height: var(--scale_12); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E"); background-size: contain; background-repeat: no-repeat; transform: translate(-50%, -50%) scale(0); transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);}
     &:hover{border: 1px solid $gray1;}
     &:checked{
       background-color: $point_primary; border: 1px solid $point_primary;
@@ -147,19 +148,19 @@ body {
   } 
   @media all and (max-width: 1024px){font-size: 1.367vw;}
   @media all and (max-width: 768px){
-    gap: $gap_4; font-size: 1.823vw;
-    input[type="checkbox"]{width: $scale_24; height: $scale_24;}
+    gap: var(--gap_4); font-size: 1.823vw;
+    input[type="checkbox"]{width: var(--scale_24); height: var(--scale_24);}
   }
   @media all and (max-width: 450px){font-size: 3.111vw;}
-  @media all and (max-width: 360px){font-size: 3.889vw;}
+  // @media all and (max-width: 360px){font-size: 3.889vw;}
 }
 
 // radio
 .radio_group{
-  display: flex; align-items: center; gap: $gap_8; user-select: none; font-size: 16px;
+  display: flex; align-items: center; gap: var(--gap_8); user-select: none; font-size: 16px;
   input[type="radio"]{
-    appearance: none; -webkit-appearance: none; width: $scale_20; height: $scale_20; border: 1px solid $gray3; border-radius: 50%; background-color: $white; position: relative; cursor: pointer; transition: all .2s cubic-bezier(.4,0,.2,1); outline: none;
-    &::after{content: ''; position: absolute; top: 50%; left: 50%; width: $scale_8; height: $scale_8; background-color: $black;
+    appearance: none; -webkit-appearance: none; width: var(--scale_20); height: var(--scale_20); border: 1px solid $gray3; border-radius: 50%; background-color: $white; position: relative; cursor: pointer; transition: all .2s cubic-bezier(.4,0,.2,1); outline: none;
+    &::after{content: ''; position: absolute; top: 50%; left: 50%; width: var(--scale_8); height: var(--scale_8); background-color: $black;
       border-radius: 50%; transform: translate(-50%, -50%) scale(0); transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.2);}
     &:hover{border: 1px solid $gray1;}
     &:checked{
@@ -175,19 +176,19 @@ body {
   } 
   @media all and (max-width: 1024px){font-size: 1.367vw;}
   @media all and (max-width: 768px){
-    gap: $gap_4; font-size: 1.823vw;
-    input[type="radio"]{width: $scale_24; height: $scale_24;}
+    gap: var(--gap_4); font-size: 1.823vw;
+    input[type="radio"]{width: var(--scale_24); height: var(--scale_24);}
   }
   @media all and (max-width: 450px){font-size: 3.111vw;}
-  @media all and (max-width: 360px){font-size: 3.889vw;}
+  // @media all and (max-width: 360px){font-size: 3.889vw;}
 }
 
 // textarea
 textarea{
-  width: 100%; border: 1px solid $gray3; border-radius: $radius_8; padding: $padding_20; font-size: 16px;
+  width: 100%; border: 1px solid $gray3; border-radius: var(--radius_8); padding: var(--padding_20); font-size: 16px;
   &:active{border: 1px solid $gray1;}
-  @media all and (max-width: 1024px){padding: $padding_12 $padding_16; font-size: 1.563vw;}
+  @media all and (max-width: 1024px){padding: var(--padding_12) var(--padding_16); font-size: 1.563vw;}
   @media all and (max-width: 768px){font-size: 2.083vw;}
-  @media all and (max-width: 450px){padding: $padding_12; font-size: 3.556vw;}
-  @media all and (max-width: 360px){font-size: 4.444vw;}
+  @media all and (max-width: 450px){padding: var(--padding_12); font-size: 3.556vw;}
+  // @media all and (max-width: 360px){font-size: 4.444vw;}
 }
