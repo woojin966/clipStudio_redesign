@@ -49,11 +49,11 @@ html, body {font-family: 'Pretendard', 'Apple SD Sandol Gothic Neo', sans-serif;
   }
   @media all and (max-width: 360px){
     gap: 1.111vw;
-    &.xl{height: var(--scale_48); font-size: 5.000vw;} /*18px*/
-    &.lg{height: var(--scale_44); font-size: 5.000vw;} /*18px*/
-    &.regular{height: var(--scale_36); font-size: 4.444vw;} /*16px*/
-    &.sm{height: var(--scale_24); font-size: 4.444vw;} /*16px*/
-    &.mini{height: var(--scale_20); font-size: 3.889vw;} /*14px*/
+    &.xl{height: var(--scale_48); font-size: 4.444vw;} /*16px*/
+    &.lg{height: var(--scale_44); font-size: 4.444vw;} /*16px*/
+    &.regular{height: var(--scale_36); font-size: 4.167vw;} /*15px*/
+    &.sm{height: var(--scale_24); font-size: 4.167vw;} /*15px*/
+    &.mini{height: var(--scale_20); font-size: 3.611vw;} /*13px*/
   }
 }
 
