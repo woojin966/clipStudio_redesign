@@ -6,11 +6,11 @@
         :modules="modules"
         :centeredSlides="true"
         :loop="true"
-        :spaceBetween="0"
+        :spaceBetween="12"
         :breakpoints="{
           /* 모바일: 주인공이 80% 차지, 양옆 10%씩 슬쩍 보임 */
           0: {
-            slidesPerView: 1.4,
+            slidesPerView: 1.5,
           },
           /* 태블릿 */
           768: {
@@ -24,12 +24,50 @@
         navigation
         pagination
         class="mainbanner_swiper">
-        <SwiperSlide>aaaaa</SwiperSlide>
-        <SwiperSlide>bbbbb</SwiperSlide>
-        <SwiperSlide>ccccc</SwiperSlide>
-        <SwiperSlide>ddddd</SwiperSlide>
-        <SwiperSlide>eeeee</SwiperSlide>
-        <SwiperSlide>fffff</SwiperSlide>
+        <SwiperSlide>
+          <router-link to="/product/pc" class="slide_link">
+            <div class="banner_text_box">
+              <p class="banner_title">
+                THE
+                <br />
+                FLOW
+              </p>
+              <p class="babber_sub b">오직, 영감만이 흐르도록</p>
+            </div>
+          </router-link>
+        </SwiperSlide>
+        <SwiperSlide>
+          <router-link to="/product/pc" class="slide_link">
+            <div class="banner_text_box">
+              <p class="banner_title">
+                PRO
+                <br />
+                POWER
+              </p>
+              <p class="babber_sub b">불가능했던 디테일의 실현</p>
+            </div>
+          </router-link>
+        </SwiperSlide>
+        <SwiperSlide>
+          <router-link to="/product/pc" class="slide_link">
+            <div class="banner_text_box">
+              <p class="banner_title">SEAMLESS</p>
+              <p class="babber_sub b">어디서든, 당신의 스튜디오</p>
+            </div>
+          </router-link>
+        </SwiperSlide>
+        <SwiperSlide>
+          <router-link to="/product/pc" class="slide_link">
+            <div class="banner_text_box">
+              <p class="banner_title">
+                THE
+                <br />
+                TOUCH
+              </p>
+              <p class="babber_sub b">가장 완벽한 획</p>
+            </div>
+          </router-link>
+        </SwiperSlide>
       </Swiper>
       <!-- 추후 아래 코드로 변경할 것 -->
       <!-- <Swiper :modules="modules" pagination>

@@ -93,6 +93,13 @@ $point_gradient : linear-gradient(135deg, #d4ff00 0%, #fdff9c 80%);
 // latout
 :root {
   --container-width: 1400px;
+  // z-index
+  --zi_minus : -1,
+  --zi_base: 1;
+  --zi_header: 10;
+  --zi_dim: 20;
+  --zi_popup: 50;
+  --zi_toast: 100;
   // padding
   --padding_100: 100px;
   --padding_80: 80px;
