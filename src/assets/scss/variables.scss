@@ -94,7 +94,7 @@ $point_gradient : linear-gradient(135deg, #d4ff00 0%, #fdff9c 80%);
 :root {
   --container-width: 1400px;
   // z-index
-  --zi_minus : -1,
+  --zi_minus : -1;
   --zi_base: 1;
   --zi_header: 10;
   --zi_dim: 20;
@@ -113,6 +113,8 @@ $point_gradient : linear-gradient(135deg, #d4ff00 0%, #fdff9c 80%);
   --padding_8: 8px;
   --padding_4: 4px;
   // gap
+  --gap_80: 80px;
+  --gap_60: 60px;
   --gap_40: 40px;
   --gap_28: 28px;
   --gap_24: 24px;
@@ -165,6 +167,8 @@ $point_gradient : linear-gradient(135deg, #d4ff00 0%, #fdff9c 80%);
     --padding_8: 0.781vw; /*8px*/
     --padding_4: 0.391vw; /*4px*/
     // gap
+    --gap_80: 7.813vw; /*80px*/
+    --gap_60: 5.859vw; /*60px*/
     --gap_40: 3.906vw; /*40px*/
     --gap_28: 2.734vw; /*28px*/
     --gap_24: 2.344vw; /*24px*/
@@ -211,6 +215,8 @@ $point_gradient : linear-gradient(135deg, #d4ff00 0%, #fdff9c 80%);
     --padding_8: 1.042vw; /*8px*/
     --padding_4: 0.521vw; /*4px*/
     // gap
+    --gap_80: 10.417vw; /*80px*/
+    --gap_60: 7.813vw; /*60px*/
     --gap_40: 5.208vw; /*40px*/
     --gap_28: 3.646vw; /*28px*/
     --gap_24: 3.125vw; /*24px*/
@@ -259,6 +265,8 @@ $point_gradient : linear-gradient(135deg, #d4ff00 0%, #fdff9c 80%);
     --padding_8: 2.051vw; /*8px*/
     --padding_4: 1.026vw; /*4px*/
     // gap
+    --gap_80: 20.513vw; /*80px*/
+    --gap_60: 15.385vw; /*60px*/
     --gap_40: 10.256vw; /*40px*/
     --gap_28: 7.179vw; /*28px*/
     --gap_24: 6.154vw; /*24px*/
@@ -305,6 +313,8 @@ $point_gradient : linear-gradient(135deg, #d4ff00 0%, #fdff9c 80%);
     --padding_8: 2.222vw; /*8px*/
     --padding_4: 1.111vw; /*4px*/
     // gap
+    --gap_80: 22.222vw; /*80px*/
+    --gap_60: 16.667vw; /*60px*/
     --gap_40: 11.111vw; /*40px*/
     --gap_28: 7.778vw; /*28px*/
     --gap_24: 6.667vw; /*24px*/
