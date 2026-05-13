@@ -2,7 +2,7 @@
   <div class="home_wrapper">
     <article class="mainbanner_wrap">
       <section class="mainbanner_sec">
-        <h1 class="blind">클립스튜디오 메인배너</h1>
+        <h2 class="blind">클립스튜디오 메인배너</h2>
         <Swiper
           :modules="modules"
           :centeredSlides="true"
@@ -61,11 +61,11 @@
     </article>
     <article class="core_features_wrap">
       <section div v-for="card in cards" :key="card.id" class="feature_sec">
-        <h1 class="blind">{{ card.hiddenTitle }}</h1>
+        <h2 class="blind">{{ card.hiddenTitle }}</h2>
         <router-link to="/" class="feature_link">
           <div class="text_box">
             <span class="category big sb">{{ card.category }}</span>
-            <h2 class="title h2">{{ card.title }}</h2>
+            <h2 class="title h1">{{ card.title }}</h2>
             <p class="desc text" v-html="card.desc"></p>
           </div>
           <div class="img_box">
@@ -79,11 +79,11 @@
       :style="{ '--dynamic-h': dynamicHeight }">
       <section class="parallax_sec pc">
         <div class="title_box flex_c">
-          <h1 class="h1" aria-label="PC로 그림그리기">
+          <h2 class="h1" aria-label="PC로 그림그리기">
             거대한 스케일,
             <br />
             압도적 디테일의 완성
-          </h1>
+          </h2>
           <router-link
             to="/drawing/pc"
             aria-label="데스크탑 가이드 알아보기"
@@ -107,11 +107,11 @@
       </section>
       <section class="parallax_sec tablet">
         <div class="title_box flex_c">
-          <h1 class="h1" aria-label="타블렛으로 그림그리기">
+          <h2 class="h1" aria-label="타블렛으로 그림그리기">
             펜끝에서 살아나는,
             <br />
             가장 직관적인 획
-          </h1>
+          </h2>
           <router-link
             to="/drawing/tablet"
             aria-label="타블렛 가이드 알아보기"
@@ -135,11 +135,11 @@
       </section>
       <section class="parallax_sec mobile">
         <div class="title_box flex_c">
-          <h1 class="h1" aria-label="모바일로 그림그리기">
+          <h2 class="h1" aria-label="모바일로 그림그리기">
             일상이 화실이 되는,
             <br />
             풍부한 영감
-          </h1>
+          </h2>
           <router-link
             to="/drawing/tablet"
             aria-label="모바일 가이드 알아보기"
@@ -161,6 +161,125 @@
             loading="lazy" />
         </picture>
       </section>
+    </article>
+    <article class="plan_wrap">
+      <div class="sticky_box">
+        <div
+          v-for="(pos, index) in dotPositions"
+          :key="index"
+          class="dot"
+          :style="{ top: pos + 'px' }">
+          <span></span>
+        </div>
+      </div>
+      <div class="plan_secs_container">
+        <section class="plan_sec" :ref="(el) => (sections[0] = el)">
+          <div class="top">
+            <div>
+              <h3 class="h2" aria-label="무료 체험판 이용하기">시작하기</h3>
+              <p class="big sb">
+                <span class="small n">
+                  Windows / macOS / iPad / Android / iPhone
+                </span>
+              </p>
+            </div>
+            <router-link to="/" class="btn xl primary">
+              무료체험 다운로드
+            </router-link>
+          </div>
+          <div class="bottom edition_desc_box">
+            <div class="pro">
+              <p class="big sb">PRO</p>
+              <p class="text">
+                일러스트와 아트워크의 표준.
+                <br />
+                합리적인 가격으로 전문적인 드로잉 경험을 제공합니다.
+              </p>
+            </div>
+            <div class="ex">
+              <p class="big sb">EX</p>
+              <p class="text">
+                만화, 웹툰, 애니메이션을 위한 궁극의 도구.
+                <br />
+                모든 창작 영역을 아우르는 프리미엄 에디션입니다.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section class="plan_sec" :ref="(el) => (sections[1] = el)">
+          <div class="top">
+            <div>
+              <h3 class="h2" aria-label="월정액 플랜 이용하기">월정액 플랜</h3>
+              <p class="big sb">
+                모든 기기에서, 가장 앞선 기능을
+                <br />
+                <span class="small n">
+                  Windows / macOS / iPad / Android / iPhone
+                </span>
+              </p>
+            </div>
+            <router-link to="/" class="btn xl primary">
+              PRO 월 1,000원 ~ / EX 월 3,000원 ~
+            </router-link>
+          </div>
+        </section>
+        <section class="plan_sec" :ref="(el) => (sections[2] = el)">
+          <div class="top">
+            <div>
+              <h3 class="h2" aria-label="일시불 플랜 이용하기">
+                무기한 라이센스
+              </h3>
+              <p class="big sb">
+                Ver4.0 무기한 사용
+                <br />
+                <span class="small n">Windows / macOS</span>
+              </p>
+            </div>
+            <router-link to="/" class="btn xl primary">
+              PRO 66,400원 / EX 301,000원
+            </router-link>
+          </div>
+        </section>
+        <section class="plan_sec" :ref="(el) => (sections[3] = el)">
+          <div class="top">
+            <h3 class="h2 blind">추천 플랜 진단하기 & APP 다운로드</h3>
+            <router-link to="/" class="btn xl secondary search_plan">
+              추천 플랜 진단하기
+            </router-link>
+          </div>
+          <div class="bottom download_box">
+            <div class="left">
+              <p class="big sb">APP Download</p>
+              <div>
+                <a
+                  href="https://apps.apple.com/kr/app/id1262985592"
+                  target="_blank">
+                  <img
+                    src="../../assets/images/App_Store_Badge_kr.png"
+                    alt="애플 앱스토어 앱 다운로드 이미지" />
+                </a>
+                <a
+                  href="https://play.google.com/store/apps/details?id=jp.co.celsys.clipstudiopaint.googleplay"
+                  target="_blank">
+                  <img
+                    src="../../assets/images/google-play-badge_kr.png"
+                    alt="구글 앱스토어 앱 다운로드 이미지" />
+                </a>
+                <a href="https://galaxy.store/csp" target="_blank">
+                  <img
+                    src="../../assets/images/GalaxyStore_kr.png"
+                    alt="갤럭시 앱스토어 앱 다운로드 이미지" />
+                </a>
+              </div>
+            </div>
+            <div class="right">
+              <img
+                src="../../assets/images/QR_onelink_kr.png"
+                alt="QR 다운로드 이미지" />
+            </div>
+          </div>
+        </section>
+      </div>
     </article>
   </div>
 </template>
@@ -221,7 +340,18 @@ const cards = ref([
   },
 ]);
 
+// plan wrap dot positioning
+const sections = ref([]); // .plan_sec 담을 배열
+const dotPositions = ref([]); // .dot top 위치값들
+const updatePositions = () => {
+  // 각 section의 시작 위치에서 60px 내려간 값을 계산
+  dotPositions.value = sections.value.map((el) => {
+    return el ? el.offsetTop + 80 : 0;
+  });
+};
+
 onMounted(() => {
+  // 디바이스 튜토리얼 배너 높이 재기
   if (bannerImg.value) {
     updateHeight(); // 초기 실행
     // 1. 창 크기가 변할 때 실시간 대응
@@ -232,9 +362,17 @@ onMounted(() => {
     // 2. 이미지 로딩 지연 대응 (혹시 모를 0px 방지)
     bannerImg.value.addEventListener("load", updateHeight);
   }
+
+  // dot 위치 값 계산
+  updatePositions();
+  window.addEventListener("resize", updatePositions);
 });
 onUnmounted(() => {
+  // 디바이스 튜토리얼 배너 높이 재기 해제
   if (resizeObserver) resizeObserver.disconnect();
+
+  // dot 위치값 계산 해제
+  window.removeEventListener("resize", updatePositions);
 });
 </script>
 <style lang="scss" scoped>

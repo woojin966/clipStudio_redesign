@@ -11,6 +11,7 @@
 .b{font-weight: bold;}
 .eb{font-weight: 600;}
 .mb{font-weight: 500;}
+.n{font-weight: 400;}
 @media all and (max-width: 1440px){
     .h1{font-size: 52px;}
     .h2{font-size: 44px;}
@@ -84,7 +85,7 @@ $white: #fff;
 $black: #000;
 $text_default: #1d1d1f;
 $gray1: #86868b; /* sub text, border default */
-$gray2 : #f5f5f7; /* bg */
+$gray2 : #c5c5c5; /* secondary */
 $gray3 : #d2d2d7; /* border secondary */
 $point_primary: #d4ff00;
 $point_secondary : #fdff9c;

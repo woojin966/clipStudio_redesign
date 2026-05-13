@@ -79,13 +79,13 @@
   .feature_link{
     display: flex; position: relative; width: 100%; height: 100%; padding: var(--padding_60); z-index: var(--zi_base); 
     &::before {
-      content: ''; position: absolute; top: 8%; left: 4%; width: 92%; height: 84%; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px);  -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: var(--radius_28); opacity: 0;       transition: opacity 0.4s ease; z-index: var(--zi_minus);           pointer-events: none; 
+      content: ''; position: absolute; top: 8%; left: 4%; width: 92%; height: 84%; background: linear-gradient(135deg, rgba(180, 180, 180, 0.3) 0%, rgba(255, 255, 255, 0.5) 45%, rgba(150, 150, 150, 0.2) 100%); backdrop-filter: blur(15px);  -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.6); border-left: 1px solid rgba(255, 255, 255, 0.6); border-radius: var(--radius_28); opacity: 0; transition: opacity 0.4s ease; z-index: var(--zi_minus); pointer-events: none; box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1), 0 10px 30px rgba(0, 0, 0, 0.05);
     }
-    &:hover {
+    &:hover, &:active {
       &::before {opacity: 1;}
     }
     .text_box{
-      display: flex; flex-direction: column; gap: var(--gap_8);
+      display: flex; flex-direction: column; gap: var(--gap_12);
       .desc{margin-top: var(--padding_12);}
     }
     .img_box{
@@ -121,8 +121,8 @@
         padding: var(--padding_40) var(--padding_28);
         &::before{border-radius: var(--radius_20);}
         .text_box{
-          gap: var(--gap_4);
-          .desc{margin-top: var(--padding_8); letter-spacing: -1.4px;}
+          gap: var(--gap_8);
+          .desc{margin-top: var(--padding_12); letter-spacing: -1.4px;}
         }
       }
   }
@@ -145,9 +145,9 @@
     &.mobile { z-index: 3; }
     .title_box{
       position: absolute; left: var(--padding_60); gap: var(--gap_28);  z-index: var(--zi_base);
-      &::before {content: ''; position: absolute; top: calc(-1 * var(--padding_28)); left: calc(-1 * var(--padding_28)); padding: var(--padding_28); width: 100%; height: 100%; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); border-radius: var(--radius_28); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(125, 125, 125, 0.2);  opacity: 0;  transition: opacity 0.4s ease; z-index: var(--zi_minus); pointer-events: none; box-shadow: 2px 4px 16px rgba(0,0,0,.2);
+      &::before {content: ''; position: absolute; top: calc(-1 * var(--padding_28)); left: calc(-1 * var(--padding_28)); padding: var(--padding_28); width: 100%; height: 100%; background: linear-gradient(135deg, rgba(180, 180, 180, 0.3) 0%,   rgba(255, 255, 255, 0.5) 45%, rgba(150, 150, 150, 0.2) 100%); backdrop-filter: blur(20px); border-radius: var(--radius_28); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.6); border-left: 1px solid rgba(255, 255, 255, 0.6); opacity: 0; transition: opacity 0.4s ease; z-index: var(--zi_minus); pointer-events: none; box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1), 0 10px 30px rgba(0, 0, 0, 0.05);
       }
-      &:has(.move_guide:hover)::before {opacity: 1;}
+      &:has(.move_guide:hover)::before, &:has(.move_guide:active)::before {opacity: 1;}
       .move_guide{width: max-content;}
       @media all and (max-width: 768px){
         gap: var(--gap_24); left: var(--padding_40);
@@ -161,5 +161,61 @@
     }
     picture{width: 100%;}
     img{width: 100%; height: auto;}
+  }
+}
+
+// plan wrap
+.plan_wrap{position: relative; display: flex; align-items: flex-start; padding: 0 var(--padding_60); gap: var(--gap_60);}
+.sticky_box{
+  position: sticky; top: 0; left: 0; display: flex; gap: var(--gap_60); align-items: center; justify-content: center; z-index: var(--zi_base); flex-direction: column; width: max-content; height: 100dvh; justify-content: space-between; padding: var(--padding_80) 0;
+  &::before{content: ''; position: absolute; top: 0; left: calc(50% - 1px); width: 2px; height: 100%; background-color: $text_default;}
+  .dot{
+    position: absolute; top: 80px; left: calc(50% - (var(--scale_28) / 2));  
+    width: var(--scale_28); height: var(--scale_28); border-radius: 100%; background-color: $text_default; border: 2px solid $text_default; display: flex; align-items: center; justify-content: center;
+    &.active{
+      background-color: transparent; border: 2px solid $point_primary;
+      span{width: 80%; height: 80%; background-color: $point_primary;}
+    }
+  }
+}
+.plan_secs_container{
+  flex: 1;
+  section{
+    padding: var(--padding_60) 0; display: flex; flex-direction: column; gap: var(--gap_28);
+    .top{
+      display: flex; justify-content: space-between;
+      > div{
+        display: flex; flex-direction: column; gap: var(--gap_20);
+        .big span{color: $gray1;}
+      }
+      a{
+        width: max-content; min-width: 320px;
+        &.search_plan{width: 100%;}
+      }
+    }
+    .bottom{
+      display: flex; gap: var(--gap_28);
+      > div{;}
+      .big{margin-bottom: var(--padding_12);}
+    }
+    .edition_desc_box{
+      > div{flex: 1; padding: var(--padding_28); width: 100%; height: 100%; background: linear-gradient(135deg, rgba(180, 180, 180, 0.3) 0%,   rgba(255, 255, 255, 0.5) 45%, rgba(150, 150, 150, 0.2) 100%); backdrop-filter: blur(20px); border-radius: var(--radius_28); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.6); border-left: 1px solid rgba(255, 255, 255, 0.6); box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1), 0 10px 30px rgba(0, 0, 0, 0.05);}
+      
+    }
+    .download_box{
+      .left{
+        > div{
+          display: flex; gap: var(--gap_20);
+          a{
+            width: 200px; height: 60px; border-radius: var(--radius_12); overflow: hidden;
+            img{width: 100%; height: 100%; object-fit: cover;}
+          }
+        }
+      }
+      .right{
+          flex: unset;
+          img{width: 200px; height: 200px;}
+        }
+    }
   }
 }

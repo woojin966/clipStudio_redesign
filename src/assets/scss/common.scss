@@ -17,11 +17,16 @@ html, body {font-family: 'Pretendard', 'Apple SD Sandol Gothic Neo', sans-serif;
   &.regular{height: var(--scale_44); font-size: 16px; padding: 0 var(--padding_20); border-radius: var(--radius_8);}
   &.sm{height: var(--scale_24); font-size: 16px; padding: 0 var(--padding_16); border-radius: var(--radius_4);}
   &.mini{height: var(--scale_20); font-size: 14px; padding: 0 var(--padding_12); border-radius: var(--radius_4);}
-  &.primary{background-color: $text_default; color: $white;}
-  &.secondary{background-color: $gray2; color: $text_default;}
+  &.primary{
+    background-color: $text_default; color: $white;
+    &:hover{background: $point_gradient; color: $text_default;}
+  }
+  &.secondary{
+    background-color: $gray2; color: $text_default;
+    &:hover{background-color: $text_default; color: $white;}
+  }
   &.line{background-color: $gray1; color: $gray1; background-color: $white;}
-  &.primary:hover{background: $point_gradient; color: $text_default;}
-  &:hover{font-weight: 600;}
+  // &:hover{font-weight: 600;}
   @media all and (max-width: 1024px){
     gap: 0.391vw;
     &.xl{height: var(--scale_48); font-size: 1.758vw;} /*18px*/
