@@ -165,10 +165,10 @@
     <article class="plan_wrap">
       <div class="sticky_box">
         <div
-          v-for="(pos, index) in dotPositions"
-          :key="index"
+          v-for="idx in 4"
+          :key="idx"
           class="dot"
-          :style="{ top: pos + 'px' }">
+          :class="{ active: activeIndex === idx - 1 }">
           <span></span>
         </div>
       </div>
@@ -340,15 +340,26 @@ const cards = ref([
   },
 ]);
 
-// plan wrap dot positioning
-const sections = ref([]); // .plan_sec 담을 배열
-const dotPositions = ref([]); // .dot top 위치값들
-const updatePositions = () => {
-  // 각 section의 시작 위치에서 60px 내려간 값을 계산
-  dotPositions.value = sections.value.map((el) => {
-    return el ? el.offsetTop + 80 : 0;
-  });
+// dot에 active 클래스 추가
+const sections = ref([]);
+const activeIndex = ref(0); // 현재 활성화 인덱스 저장
+// 옵저버
+const observerOptions = {
+  root: null, // 브라우저 뷰포트 기준
+  rootMargin: "-20% 0px -20% 0px", // 하단에서 20% 올라온 지점에서 감지 (수치 조절 가능)
+  threshold: 0.5, // 섹션의 10%가 보이기 시작할 때
 };
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    // 섹션이 화면 안으로 들어왔을 때만 실행
+    if (entry.isIntersecting) {
+      const index = sections.value.indexOf(entry.target);
+      if (index !== -1) {
+        activeIndex.value = index;
+      }
+    }
+  });
+}, observerOptions);
 
 onMounted(() => {
   // 디바이스 튜토리얼 배너 높이 재기
@@ -363,16 +374,17 @@ onMounted(() => {
     bannerImg.value.addEventListener("load", updateHeight);
   }
 
-  // dot 위치 값 계산
-  updatePositions();
-  window.addEventListener("resize", updatePositions);
+  // .dot에 active 추가삭제 : 각 섹션 감시 시작
+  sections.value.forEach((section) => {
+    if (section) observer.observe(section);
+  });
 });
 onUnmounted(() => {
   // 디바이스 튜토리얼 배너 높이 재기 해제
   if (resizeObserver) resizeObserver.disconnect();
 
-  // dot 위치값 계산 해제
-  window.removeEventListener("resize", updatePositions);
+  // .dot에 active 추가삭제 : 옵저버 해제
+  observer.disconnect();
 });
 </script>
 <style lang="scss" scoped>

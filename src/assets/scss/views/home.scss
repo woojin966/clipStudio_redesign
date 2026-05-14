@@ -167,20 +167,20 @@
 // plan wrap
 .plan_wrap{position: relative; display: flex; align-items: flex-start; padding: 0 var(--padding_60); gap: var(--gap_60);}
 .sticky_box{
-  position: sticky; top: 0; left: 0; display: flex; gap: var(--gap_60); align-items: center; justify-content: center; z-index: var(--zi_base); flex-direction: column; width: max-content; height: 100dvh; justify-content: space-between; padding: var(--padding_80) 0;
+  position: sticky; top: 0; left: 0; display: flex; align-items: center; justify-content: space-between; z-index: var(--zi_base); flex-direction: column; width: max-content; height: 100dvh; padding: var(--padding_80) 0;
   &::before{content: ''; position: absolute; top: 0; left: calc(50% - 1px); width: 2px; height: 100%; background-color: $text_default;}
   .dot{
-    position: absolute; top: 80px; left: calc(50% - (var(--scale_28) / 2));  
-    width: var(--scale_28); height: var(--scale_28); border-radius: 100%; background-color: $text_default; border: 2px solid $text_default; display: flex; align-items: center; justify-content: center;
+    width: var(--scale_28); height: var(--scale_28); border-radius: 100%; background-color: $text_default; border: 2px solid $text_default; display: flex; align-items: center; justify-content: center; position: relative; z-index: var(--zi_base);
+    span{width: 60%; height: 60%; background-color: $point_primary; border-radius: 100%; transform: translate(0, 0) scale(0); transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.2); }
     &.active{
-      background-color: transparent; border: 2px solid $point_primary;
-      span{width: 80%; height: 80%; background-color: $point_primary;}
+      background-color: $white; border: 2px solid $point_primary;
+      span{transform: translate(0, 0) scale(1);}
     }
   }
 }
 .plan_secs_container{
   flex: 1;
-  section{
+  .plan_sec{
     padding: var(--padding_60) 0; display: flex; flex-direction: column; gap: var(--gap_28);
     .top{
       display: flex; justify-content: space-between;
