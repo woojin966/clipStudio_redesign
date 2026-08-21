@@ -163,16 +163,17 @@
       </section>
     </article>
     <article class="plan_wrap">
-      <div class="sticky_box">
+      <div class="sticky_box" ref="stickyBox">
         <div
-          v-for="idx in 4"
-          :key="idx"
+          v-for="(pos, index) in dotPositions"
+          :key="index"
           class="dot"
-          :class="{ active: activeIndex === idx - 1 }">
+          :class="{ active: activeIndex === index }"
+          :style="{ top: pos + 'px' }">
           <span></span>
         </div>
       </div>
-      <div class="plan_secs_container">
+      <div class="plan_secs_container" ref="planContainer">
         <section class="plan_sec" :ref="(el) => (sections[0] = el)">
           <div class="top">
             <div>
@@ -284,21 +285,20 @@
   </div>
 </template>
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted, nextTick } from "vue";
 import { Pagination, Navigation } from "swiper/modules";
 const modules = [Pagination, Navigation];
 
 // device banner height
 const bannerImg = ref(null);
 const dynamicHeight = ref("400px");
-const updateHeight = () => {
+let bannerResizeObserver = null;
+
+const updateBannerHeight = () => {
   if (bannerImg.value) {
-    // 이미지의 실제 높이를 가져와서 저장
-    const height = bannerImg.value.offsetHeight;
-    dynamicHeight.value = `${height}px`;
+    dynamicHeight.value = `${bannerImg.value.offsetHeight}px`;
   }
 };
-let resizeObserver = null;
 
 // feature data
 const cards = ref([
@@ -308,7 +308,6 @@ const cards = ref([
     category: "Features",
     title: "본질의 진화",
     desc: `상상을 현실로 만드는 가장 정교한 도구들의 집합. <br />v5.0이 제시하는 새로운 창작의 기준을 경험하십시오.`,
-    // image: '/images/feature_main.jpg'
     image: "",
   },
   {
@@ -317,7 +316,6 @@ const cards = ref([
     category: "Assets",
     title: "영감의 보고",
     desc: `전 세계 크리에이터가 공유하는 무한한 소재 라이브러리. <br />당신의 획에 독보적인 가능성을 더합니다.`,
-    // image: '/images/feature_main.jpg'
     image: "",
   },
   {
@@ -326,7 +324,6 @@ const cards = ref([
     category: "Community",
     title: "창작의 연대",
     desc: `함께 그릴 때 영감은 배가됩니다. <br />팁을 나누고 작품을 공유하며 전 세계 아티스트와 함께 성장하십시오.`,
-    // image: '/images/feature_main.jpg'
     image: "",
   },
   {
@@ -335,56 +332,104 @@ const cards = ref([
     category: "Support",
     title: "완벽한 동행",
     desc: `창작 과정의 모든 고민을 해결합니다. <br />입문자를 위한 가이드부터 전문가를 위한 기술 지원까지`,
-    // image: '/images/feature_main.jpg'
     image: "",
   },
 ]);
 
-// dot에 active 클래스 추가
-const sections = ref([]);
-const activeIndex = ref(0); // 현재 활성화 인덱스 저장
-// 옵저버
-const observerOptions = {
-  root: null, // 브라우저 뷰포트 기준
-  rootMargin: "-20% 0px -20% 0px", // 하단에서 20% 올라온 지점에서 감지 (수치 조절 가능)
-  threshold: 0.5, // 섹션의 10%가 보이기 시작할 때
-};
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    // 섹션이 화면 안으로 들어왔을 때만 실행
-    if (entry.isIntersecting) {
-      const index = sections.value.indexOf(entry.target);
-      if (index !== -1) {
-        activeIndex.value = index;
-      }
-    }
-  });
-}, observerOptions);
+// Plan Section & Sticky Box Height Match
+const stickyBox = ref(null);
+const planContainer = ref(null);
+let planResizeObserver = null;
 
-onMounted(() => {
-  // 디바이스 튜토리얼 배너 높이 재기
-  if (bannerImg.value) {
-    updateHeight(); // 초기 실행
-    // 1. 창 크기가 변할 때 실시간 대응
-    resizeObserver = new ResizeObserver(() => {
-      updateHeight();
+const matchPlanHeight = () => {
+  if (planContainer.value && stickyBox.value) {
+    const targetHeight = planContainer.value.offsetHeight;
+    stickyBox.value.style.height = `${targetHeight}px`;
+  }
+};
+
+// 4. Dot Active State (Scroll Spy)
+const sections = ref([]);
+const activeIndex = ref(0);
+const dotPositions = ref([]);
+
+const observerOptions = {
+  root: null,
+  rootMargin: "-20% 0px -20% 0px",
+  threshold: 0.5,
+};
+const updateDotPositions = () => {
+  if (!sections.value.length || !planContainer.value) return;
+
+  const containerTop =
+    planContainer.value.getBoundingClientRect().top + window.scrollY;
+
+  dotPositions.value = sections.value
+    .filter((el) => el !== null)
+    .map((el, idx) => {
+      const sectionTop = el.getBoundingClientRect().top + window.scrollY;
+      const relativeTop = sectionTop - containerTop;
+
+      // 0번째: relativeTop - 0
+      // 1번째: relativeTop - 30
+      // 2번째: relativeTop - 60
+      // 3번째: relativeTop - 90
+      return relativeTop - idx * 30;
     });
-    resizeObserver.observe(bannerImg.value);
-    // 2. 이미지 로딩 지연 대응 (혹시 모를 0px 방지)
-    bannerImg.value.addEventListener("load", updateHeight);
+};
+
+let sectionObserver = null;
+
+if (typeof window !== "undefined") {
+  sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const index = sections.value.indexOf(entry.target);
+        if (index !== -1) {
+          activeIndex.value = index;
+        }
+      }
+    });
+  }, observerOptions);
+}
+
+onMounted(async () => {
+  await nextTick();
+
+  if (bannerImg.value) {
+    updateBannerHeight();
+    bannerResizeObserver = new ResizeObserver(updateBannerHeight);
+    bannerResizeObserver.observe(bannerImg.value);
+    bannerImg.value.addEventListener("load", updateBannerHeight);
   }
 
-  // .dot에 active 추가삭제 : 각 섹션 감시 시작
-  sections.value.forEach((section) => {
-    if (section) observer.observe(section);
-  });
+  if (planContainer.value) {
+    matchPlanHeight();
+    updateDotPositions();
+
+    planResizeObserver = new ResizeObserver(() => {
+      matchPlanHeight();
+      updateDotPositions();
+    });
+    planResizeObserver.observe(planContainer.value);
+  }
+
+  if (sectionObserver) {
+    sections.value.forEach((section) => {
+      if (section) sectionObserver.observe(section);
+    });
+  }
+
+  window.addEventListener("resize", updateDotPositions);
 });
 onUnmounted(() => {
-  // 디바이스 튜토리얼 배너 높이 재기 해제
-  if (resizeObserver) resizeObserver.disconnect();
-
-  // .dot에 active 추가삭제 : 옵저버 해제
-  observer.disconnect();
+  if (bannerResizeObserver) bannerResizeObserver.disconnect();
+  if (planResizeObserver) planResizeObserver.disconnect();
+  if (sectionObserver) sectionObserver.disconnect();
+  if (bannerImg.value) {
+    bannerImg.value.removeEventListener("load", updateBannerHeight);
+  }
+  window.removeEventListener("resize", updateDotPositions);
 });
 </script>
 <style lang="scss" scoped>
