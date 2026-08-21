@@ -42,6 +42,23 @@
       .babber_sub{font-size: 20px; margin-top: var(--padding_12); }
     }
   }
+  :deep(.swiper-button-prev), :deep(.swiper-button-next){
+    width: var(--scale_28); height: var(--scale_28); border-top: 1px solid #000;
+    svg{display: none;}
+    @media all and (max-width: 1024px){width: var(--scale_20); height: var(--scale_20);}
+  }
+  :deep(.swiper-button-prev){
+    border-left: 1px solid #000; transform: rotate(-45deg); left: 5.556vw; right: unset;
+    @media all and (max-width: 480px){left: 4.103vw;}
+    @media all and (max-width: 360px){left: 4.444vw;}
+  }
+  :deep(.swiper-button-next){
+    border-right: 1px solid #000; transform: rotate(45deg); right: 5.556vw; left: unset;
+    @media all and (max-width: 480px){right: 4.103vw;}
+    @media all and (max-width: 360px){right: 4.444vw;}
+  }
+  :deep(.swiper-pagination){display: flex; align-items: center; justify-content: center; top: unset; bottom: calc(-1 * var(--scale_12));}
+  :deep(.swiper-pagination-bullet-active){width: var(--scale_12); height: var(--scale_12); background-color: #000;}
 }
 
 // featrue wrap
